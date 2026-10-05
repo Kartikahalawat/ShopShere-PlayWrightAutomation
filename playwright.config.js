@@ -9,7 +9,8 @@ export default defineConfig({
 
   // Maximum time for expect() assertions
   expect: {
-    timeout: 5000, // 5 seconds
+    timeout: 5000, // 5 seconds default
+    //timeout : 12000 //if client wants 12 sec timeout
   },
 
   // HTML test report
