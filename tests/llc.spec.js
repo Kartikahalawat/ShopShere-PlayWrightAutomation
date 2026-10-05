@@ -19,6 +19,9 @@ test('Playwright Special Locators', async ({page})=> {
 
 test('Playwright Test Level timeout', async ({page})=> {
 
+    test.setTimeout(60000); //setting Timeout for this particular test function
+    page.setDefaultTimeout(9000);   //setting action timeout for this test function
+
     const slowexpect = expect.configure({timeout : 9000}); //setting expect timeout at TEST Level
 
     await page.goto("https://rahulshettyacademy.com/angularpractice/");

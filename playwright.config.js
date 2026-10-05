@@ -22,5 +22,7 @@ export default defineConfig({
     // Local: headed mode
     // GitHub Actions / CI: headless mode
     headless: process.env.CI ? true : false,
+
+     actionTimeout: 10_000,   //setting action timeouts (like click, fill,etc)
   },
 });
