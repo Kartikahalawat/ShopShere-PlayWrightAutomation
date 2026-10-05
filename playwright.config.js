@@ -1,24 +1,25 @@
 // @ts-check
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 
+export default defineConfig({
+  testDir: './tests',
 
+  // Maximum time for each test
+  timeout: 30 * 1000, // 30 seconds
 
-const config = ({
-    testDir: './tests',
-    timeout: 30 * 1000, //30 milliseconds
-    expect : {
-      timeout: 5000
-    },
-
-    reporter: 'html',
-
-    use: {
-      browserName: 'chromium',
-      use: {
-    headless: process.env.CI ? true : false,
-}
+  // Maximum time for expect() assertions
+  expect: {
+    timeout: 5000, // 5 seconds
   },
 
-});
-module.exports = config;
+  // HTML test report
+  reporter: 'html',
 
+  use: {
+    browserName: 'chromium',
+
+    // Local: headed mode
+    // GitHub Actions / CI: headless mode
+    headless: process.env.CI ? true : false,
+  },
+});
