@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+import{test, expect} from '@playwright/test';
  
 test('@Webst Client App login', async ({ page }) => {
    //js file- Login js, DashboardPage
@@ -13,7 +13,7 @@ test('@Webst Client App login', async ({ page }) => {
    await page.locator(".card-body b").first().waitFor();
    
    await page.locator(".card-body").filter({hasText:"ZARA COAT 3"})
-   .getByRole("button",{name:"Add to Cart"}).click();
+   await page.getByRole("button",{name:"Add to Cart"}).nth(1).click();
  
    await page.getByRole("listitem").getByRole('button',{name:"Cart"}).click();
  

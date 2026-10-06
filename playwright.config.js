@@ -24,5 +24,7 @@ export default defineConfig({
     headless: process.env.CI ? true : false,
 
      actionTimeout: 10_000,   //setting action timeouts (like click, fill,etc)
+     screenshot : 'on',
+     trace : 'on',
   },
 });

@@ -1,6 +1,6 @@
-const { test, expect } = require('@playwright/test');
+import{test, expect} from '@playwright/test';
 
-test.only('Browser Context-Validating  Error login', async ({ page }) => {
+test('Browser Context-Validating  Error login', async ({ page }) => {
     // chrome - plugins/cookies
 
     const productName = 'Zara Coat 3';

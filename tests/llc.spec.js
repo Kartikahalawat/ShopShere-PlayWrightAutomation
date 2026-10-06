@@ -11,7 +11,7 @@ test('Playwright Special Locators', async ({page})=> {
     
     //5 sec default timeout for expect assertions
     //explicitly setting timeout 10 sec for this assertion
-    await expect(page.getByText("Success! The Form has been submitted successfully!.")).isVisible({timeout: 10_000});
+    await expect(page.getByText("Success! The Form has been submitted successfully!.")).toBeVisible({timeout: 10_000});
 
     await page.getByRole("link", {name : "Shop"}).click();
     await page.locator("app-card").filter({hasText: "Nokia Edge"}).getByRole("button").click();
