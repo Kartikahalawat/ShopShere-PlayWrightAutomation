@@ -25,6 +25,6 @@ export default defineConfig({
 
      actionTimeout: 10_000,   //setting action timeouts (like click, fill,etc)
      screenshot : 'on',
-     trace : 'on',
+     trace : "retain-on-failure",
   },
 });
