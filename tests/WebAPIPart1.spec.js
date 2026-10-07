@@ -1,6 +1,7 @@
 import{test, expect, request} from "@playwright/test";
 
 const loginPayLoad = {userEmail: "kartikahalawat01@gmail.com", userPassword: "Kartik01*"};
+let token;
 
 test.beforeAll( async ()=>
 {
@@ -12,8 +13,9 @@ test.beforeAll( async ()=>
     );
 
     expect((loginResponse).ok()).toBeTruthy();
-    const loginResponseJson = loginResponse.json();
-    const token = loginResponseJson.token;
+    const loginResponseJson = await loginResponse.json();
+    token = loginResponseJson.token;
+    console.log(token);
 });
 
 test.beforeEach( ()=>
@@ -22,18 +24,23 @@ test.beforeEach( ()=>
 });
 
 test('Client App Login', async ({ page }) => {
-    // chrome - plugins/cookies
 
-    const productName = 'Zara Coat 3';
-    const email = "kartikahalawat01@gmail.com";
-
-    await page.goto("https://rahulshettyacademy.com/client/");
-    await page.locator("#userEmail").fill(email);
-    await page.locator("#userPassword").fill("Kartik01*");
-    await page.locator("[value='Login']").click();
+    page.addInitScript(value => {
+        window.localStorage.setItem('token',value);
+    }, token);
+    
+    // await page.goto("https://rahulshettyacademy.com/client/");
+    // await page.locator("#userEmail").fill(email);
+    // await page.locator("#userPassword").fill("Kartik01*");
+    // await page.locator("[value='Login']").click();
 
     //Waiting till all network calls are made
     //await page.waitForLoadState("networkidle");
+
+    const productName = 'Zara Coat 3';
+    const email = "kartikahalawat01@gmail.com";
+    await page.goto("https://rahulshettyacademy.com/client/");
+
     await page.locator(".card-body b").first().waitFor();
     const products = await page.locator(".card-body");
     await page.locator(".card-body b").first().waitFor();
