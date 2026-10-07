@@ -1,4 +1,25 @@
-import{test, expect} from '@playwright/test';
+import{test, expect, request} from "@playwright/test";
+
+const loginPayLoad = {userEmail: "kartikahalawat01@gmail.com", userPassword: "Kartik01*"};
+
+test.beforeAll( async ()=>
+{
+    const apiContext = await request.newContext();
+    const loginResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
+        {
+            data : loginPayLoad
+        }
+    );
+
+    expect((loginResponse).ok()).toBeTruthy();
+    const loginResponseJson = loginResponse.json();
+    const token = loginResponseJson.token;
+});
+
+test.beforeEach( ()=>
+{
+ 
+});
 
 test('Client App Login', async ({ page }) => {
     // chrome - plugins/cookies
