@@ -1,5 +1,5 @@
 const { test, expect, request } = require('@playwright/test');
-const { APiUtils } = require('./utils/APiUtils');
+const { APiUtils } = require('./utils/APiUtils' + '');
 
 // Credentials used by the API login request.
 // The API returns an authentication token after successful login.
