@@ -1,10 +1,13 @@
 import{test, expect, request} from "@playwright/test";
 
 const loginPayLoad = {userEmail: "kartikahalawat01@gmail.com", userPassword: "Kartik01*"};
+const orderPayLoad = {orders: [{country: "India", productOrderedId: "6960eac0c941646b7a8b3e68"}]};
 let token;
+let orderId;
 
 test.beforeAll( async ()=>
 {
+    //Login API
     const apiContext = await request.newContext();
     const loginResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login",
         {
@@ -16,6 +19,21 @@ test.beforeAll( async ()=>
     const loginResponseJson = await loginResponse.json();
     token = loginResponseJson.token;
     console.log(token);
+
+    //Create Order
+    const orderResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/order/create-order",
+        {
+            data : orderPayLoad,
+            headers:{
+                'Authorization' : token,
+                'Content-Type' : "application/json"
+            },
+        }
+    )
+    const orderResponseJson = await orderResponse.json();
+    console.log(orderResponseJson);
+    orderId = orderResponseJson.orders[0];
+    console.log(orderId);
 });
 
 test.beforeEach( ()=>
@@ -40,48 +58,6 @@ test('Client App Login', async ({ page }) => {
     const productName = 'Zara Coat 3';
     const email = "kartikahalawat01@gmail.com";
     await page.goto("https://rahulshettyacademy.com/client/");
-
-    await page.locator(".card-body b").first().waitFor();
-    const products = await page.locator(".card-body");
-    await page.locator(".card-body b").first().waitFor();
-    const titles = await page.locator(".card-body b").allTextContents();
-    console.log(titles);
-
-    const count = await products.count();
-    for (let i = 0; i < count; i++) {
-        const title = await products.nth(i).locator("b").textContent();
-
-        if (title?.trim().toLowerCase() === productName.trim().toLowerCase()) {
-            await products.nth(i).locator("text='Add To Cart'").click();
-            break;
-        }
-    }
-    await page.locator("[routerlink*='cart']").click();
-    await page.locator("div li").first().waitFor();
-    const bool = page.locator("h3:has-text('ZARA COAT 3')").isVisible();
-
-    expect(bool).toBeTruthy();
-
-    await page.locator("text='Checkout'").click();
-    await page.locator("[placeholder='Select Country']").pressSequentially("ind", {delay : 150}); //filling letter by letter with 150ms expected delay
-    const dropdown = page.locator(".ta-results");
-    await dropdown.waitFor();
-    const optionsCount = await dropdown.locator("button").count();
-    for(let i=0; i<optionsCount; i++){
-        const text = (await dropdown.locator("button").nth(i).textContent())
-                    .trim().toLowerCase();
-        
-        if(text.includes("india")){
-            await dropdown.locator("button").nth(i).click();
-            break;
-        }
-    }
-
-    await expect(page.locator(".user__name [type='text']").first()).toHaveText(email);
-    await page.locator(".action__submit").click();
-    await expect(page.locator(".hero-primary")).toHaveText(" Thankyou for the order. ");
-    const orderId = await page.locator(".em-spacer-1 .ng-star-inserted").textContent();
-    console.log(orderId);
     await page.locator("button[routerlink*='myorders']").click();
     
     await page.locator("tbody").first().waitFor();
@@ -100,3 +76,6 @@ test('Client App Login', async ({ page }) => {
     expect(orderId.includes(orderIdDetails)).toBeTruthy();
 
 });
+
+//Verify if order created is showing in history page
+//Precondion - create order
