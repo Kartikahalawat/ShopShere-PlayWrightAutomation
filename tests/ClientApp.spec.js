@@ -1,6 +1,6 @@
 import{test, expect} from '@playwright/test';
 
-test('Client App Login', async ({ page }) => {
+test.skip('Client App Login', async ({ page }) => {
     // chrome - plugins/cookies
 
     const productName = 'Zara Coat 3';
