@@ -1,6 +1,6 @@
 
 const { test, expect, request } = require('@playwright/test');
-const { customtest } = require("../tests/utils/Fixtures.js");
+const { customtest } = require("../utils/Fixtures.js");
 
 customtest("Fixtures custom", async ({ authenticatedPage, createOrder, testDataForOrder }) => {
     // Verify that an order created through the API is available in the user's order history.

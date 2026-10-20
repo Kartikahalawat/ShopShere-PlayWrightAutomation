@@ -1,5 +1,5 @@
 const { test, expect, request } = require('@playwright/test');
-const { APiUtils } = require('./utils/APiUtils');
+const { APiUtils } = require('../utils/APiUtils');
 
 // Credentials used by APiUtils to authenticate through the API.
 // This avoids performing the login through the UI before creating an order.
