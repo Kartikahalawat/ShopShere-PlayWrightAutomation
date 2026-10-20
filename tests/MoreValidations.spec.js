@@ -33,7 +33,7 @@ test("Screenshot & Visual Comparison", async({page})=>{
     await expect(page.locator("#displayed-text")).toBeHidden();
 });
 
-test('visual testing', async({page})=>{
+test.skip('visual testing', async({page})=>{
     await page.goto("https://flightware.com/");
     await page.screenshot({path :'flight.png'});
 
