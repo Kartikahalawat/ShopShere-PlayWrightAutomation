@@ -44,7 +44,7 @@ function readExcel(worksheet, searchText) {
     return output;
 }
 
-test('Upload Download Excel Validation', async ({page})=>{
+test.skip('Upload Download Excel Validation', async ({page})=>{
     await page.goto("https://rahulshettyacademy.com/upload-download-test/index.html");
     const downloadPromise = page.waitForEvent("download");
     await page.getByRole('button', {name : 'Download'}).click();

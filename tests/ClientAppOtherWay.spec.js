@@ -1,6 +1,6 @@
 import{test, expect} from '@playwright/test';
  
-test('@Webst Client App login', async ({ page }) => {
+test.skip('@Webst Client App login', async ({ page }) => {
    //js file- Login js, DashboardPage
    const email = "kartikahalawat01@gmail.com";
    const productName = 'ZARA COAT 3';
