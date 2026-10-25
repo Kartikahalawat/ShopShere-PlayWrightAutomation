@@ -10,6 +10,7 @@
     "ChromeNewConfig" : "npx playwright test --config playwright.config1.js --project=chrome"  
   },
   "keywords": [],
+  
   "author": "",
   "license": "ISC",
   "type": "commonjs",
