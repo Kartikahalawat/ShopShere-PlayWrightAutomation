@@ -7,7 +7,7 @@ const dataset = JSON.parse(
 );
 
 for (const data of dataset) {
-  test(`Client App login ${data.productName}`, async ({ page }) => {
+  test(`@Web Client App login ${data.productName}`, async ({ page }) => {
     const poManager = new POManager(page);
     //js file- Login js, DashboardPage
 

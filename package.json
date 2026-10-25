@@ -4,15 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test tests/WebAPIPart1.spec.js --header"
+    "regression": "npx playwright test",
+    "webTests" : "npx playwright test --grep @Web",
+    "APITests" : "npx playwright test --grep @API",
+    "ChromeNewConfig" : "npx playwright test --config playwright.config1.js --project=chrome"  
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.63.0",
+    "@playwright/test": "^1.64.1",
     "@types/node": "^26.6.4",
+    "allure-commandline": "^2.46.1",
+    "allure-playwright": "^3.14.0",
     "exceljs": "^4.4.0"
   }
 }

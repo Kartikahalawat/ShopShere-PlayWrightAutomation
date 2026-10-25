@@ -41,7 +41,7 @@ test('Page Playwright test', async ({ page }) => {
     await expect(page).toHaveTitle("Google");
 });
 
-test('UI Controls', async ({page})=>
+test('@Web UI Controls', async ({page})=>
 {
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     const userName = page.locator('#username');

@@ -1,10 +1,10 @@
 // @ts-check
-import { defineConfig } from '@playwright/test';
+import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
 
-  retries:2,
+  retries: 2,
 
   // Maximum time for each test
   timeout: 30 * 1000, // 30 seconds
@@ -16,17 +16,17 @@ export default defineConfig({
   },
 
   // HTML test report
-  reporter: 'html',
+  reporter: [["list"], ["allure-playwright"]],
 
   use: {
-    browserName: 'chromium',
+    browserName: "chromium",
 
     // Local: headed mode
     // GitHub Actions / CI: headless mode
     headless: process.env.CI ? true : false,
 
-     actionTimeout: 10_000,   //setting action timeouts (like click, fill,etc)
-     screenshot : 'on',
-     trace : "retain-on-failure",
+    actionTimeout: 10_000, //setting action timeouts (like click, fill,etc)
+    screenshot: "on",
+    trace: "retain-on-failure",
   },
 });

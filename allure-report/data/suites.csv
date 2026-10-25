@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1717","@API Test Case 2","","2026-10-23","passed","2026-10-23","","WebAPIPart2.spec.js","",""
+"","3101","@API Place the order","","2026-10-23","passed","2026-10-23","","WebAPIPart1.spec.js","",""

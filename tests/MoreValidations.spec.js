@@ -1,7 +1,7 @@
 import{test, expect} from '@playwright/test';
 
 //test.describe.configure({mode: 'parallel'});
-test("Popup Validations", async({page})=>
+test("@Web Popup Validations", async({page})=>
 {
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
     // await page.goto("http://google.com");

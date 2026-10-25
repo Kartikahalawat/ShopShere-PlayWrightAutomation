@@ -47,7 +47,7 @@ test.beforeEach(() => {
 });
 
 // Verify that the order created through the API appears in the UI order history.
-test('Place the order', async ({ page }) => {
+test('@API Place the order', async ({ page }) => {
 
     // Inject the authentication token into localStorage before page scripts run.
     // This allows the browser to access the authenticated session without

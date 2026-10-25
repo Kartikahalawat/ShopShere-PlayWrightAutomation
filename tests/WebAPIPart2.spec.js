@@ -93,7 +93,7 @@ test('Client App Login', async () => {
 
 });
 
-test('Test Case 2', async () => {
+test('@API Test Case 2', async () => {
     // chrome - plugins/cookies
 
     const productName = 'Zara Coat 3';
